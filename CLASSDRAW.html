@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="canvas" style="background:rgb(4, 103, 174); margin:2% 4%" width="1700" height="800"></canvas> 
+                  
+          
+     <script>
+
+     
+var canvas=document.getElementById('canvas');
+var c=canvas.getContext('2d');
+let start_canvas_width=canvas.width-1700;
+
+
+class DrawRectangle{
+     
+    constructor(x,y,speed) {
+      
+        this.x=x;
+        this.y=y;
+        this.speed=speed;
+        this.start_canvas_width=canvas.width-1700;
+        this.end_canvas_width=canvas.width;
+
+            
+                
+}
+    
+
+move(){   // 
+
+
+    const animate = ()=>{
+            
+            c.fillStyle = "rgb(4, 103, 174)"; //rysuje kwadraty w kolorze płótna
+            c.fillRect(this.x, this.y, 30, 30);
+   
+                this.x+=this.speed+1;
+             
+                
+          
+                c.fillStyle="white";
+                c.fillRect(this.x,this.y,20,20);
+
+            
+                if(this.x>=this.end_canvas_width ){
+                        
+                    this.x=0;
+                    this.y=Math.floor(Math.random()*800)
+             
+                }
+
+                requestAnimationFrame(animate);
+
+            }
+       
+            requestAnimationFrame(animate);
+}
+
+
+
+}
+
+
+
+    let drawrectangle = new DrawRectangle(0,Math.floor(Math.random()*700),4 );
+   
+        drawrectangle.move();
+  
+        
+const EnemyTable=[];
+const numberEnemy=1;
+
+   
+
+ 
+
+setInterval(()=>{
+
+
+    let drawrectangle = new DrawRectangle(0,Math.floor(Math.random()*1100),4);
+ 
+     drawrectangle.move();
+
+
+     for(let x=0;x<=numberEnemy;x++){
+     EnemyTable.push(drawrectangle);
+
+    }
+  },1000)
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+</body>
+</html>
